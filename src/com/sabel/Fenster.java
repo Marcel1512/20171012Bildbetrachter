@@ -13,6 +13,7 @@ public class Fenster extends JFrame {
     private JLabel jLabel;
     private Icon[] icon;
     private ButtonGroup bg;
+    private JScrollPane jScrollPane;
 
 
 
@@ -37,6 +38,7 @@ public class Fenster extends JFrame {
 
 
     private void initEvents() {
+
     }
 
     private void initComponents() {
@@ -51,24 +53,30 @@ public class Fenster extends JFrame {
 
 
         jradios = new JRadioButton[4];
+        bg = new ButtonGroup();
         for (int i = 0; i < 4; i++) {
             jradios[i] = new JRadioButton("Bild" + (i + 1));
             jpWest.add(jradios[i]);
             bg.add(jradios[i]);
         }
+        jradios[0].setSelected(true);
 
 
         jpCenter = new JPanel();
         icon = new ImageIcon[4];
-        for (int i = 1; i < 4 ; i++) {
-            icon[i] = new ImageIcon("D:\\bilder\\Bild" + i);
+        for (int i = 0; i < 4 ; i++) {
+            icon[i] = new ImageIcon("D:\\bilder\\Bild" + (i + 1) + ".jpg");
+
+
         }
+        jLabel = new JLabel(icon[0]);
 
+        jScrollPane = new JScrollPane(jLabel);
 
-
+        this.add(jScrollPane, BorderLayout.CENTER);
         this.add(jpSouth, BorderLayout.SOUTH);
         this.add(jpWest, BorderLayout.WEST);
-        this.add(jpCenter, BorderLayout.CENTER);
+
 
 
 
